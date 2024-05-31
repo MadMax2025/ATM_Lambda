@@ -44,11 +44,6 @@ export class ATMStack extends Stack {
     resource.addResource('cambiarClave').addMethod('POST', new LambdaIntegration(lambdaCambiarClave))
 
 
-
-
-
-    
-
     
 
   }

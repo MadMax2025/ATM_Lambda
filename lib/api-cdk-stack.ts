@@ -28,7 +28,7 @@ export class ATMStack extends Stack {
       code: Code.fromAsset('lambda'),
     })
 
-
+    // Metodo POST
     // API Gateway para exponer las funciones
     const api = new RestApi(this, 'ApiGateway', {
       restApiName: 'ApiGateway-ATM',

@@ -7,7 +7,15 @@ exports.handler = async (event) => {
         estado: "completed",
         timestamp: new Date().toISOString()
     };
+    // Conectarse a mysql
+    const mysql = require('mysql');
 
+    const connection = mysql.createConnection({
+        host: 'localhost',   
+        user: 'root',
+        password: 'root',
+        database: 'mydb' //3306
+    });
     const monto = transaccion.monto;
 
     if (transactionDB.monto < monto) {

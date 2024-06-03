@@ -1,3 +1,11 @@
+
+exports.handler = async (event) => {
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Deposito por realizar" })
+    }
+}
+
 exports.handler = async (event) => {
 
     // Conectarse a mysql

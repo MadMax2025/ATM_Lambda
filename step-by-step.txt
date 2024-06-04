@@ -1,2 +1,70 @@
 1. crear la aplicación cdk: cdk init app --language=typescript
-2.
+2.Desarrollo una API GetWay mediante el kit de herramientas AWSCDK
+
+AWS CDK (Cloud Development Kit ) , es un marco de desarrollo de software de código abierto para definir la infraestructura de la nube en el código y aprovisionarla mediante ella AWS CloudFormation.
+
+Requisitos previos
+AWS identity and Access Management, tenemos saber ¿Qué es IAM? Y ¿Qué es el centro de identidad de IAM?
+
+Prepare su entorno Local:
+Instale en su maquina el Node.Js 14.15.0 o una versión posterior independientemente al lenguaje de programación que escoja.
+
+Nota: El Node.js ya incluye npm(10.5.2) que permitirá instalar los demás paquetes de AWS CDK.
+A continuación, instalaremos el kit de herramientas AWS CDK. El kit de herramientas es una utilidad de línea de comandos que le permite trabajar con aplicaciones CDK.
+Abra una sesión de terminal y ejecute el siguiente comando:
+npm install -g aws-cdk
+
+Windows: necesitarás ejecutar esto como administrador
+Puede consultar la versión del kit de herramientas:
+
+El lenguaje TypeScript es un idioma de cliente totalmente compatible AWS CDK y se considera estable.
+
+npm install -g typescript
+Deberás contar también con un editor o IDE de código. Muchos AWS CDK desarrolladores utilizan Visual Studio Code ( código abierto)
+Esta IDE deberá tener las librerías e instalar herramientas como “Codium” que hará más sencillo estructurar su código y construir la infraestructura basada en líneas de Código.
+
+Creación de un proyecto
+mkdir my-project
+cd my-project
+cdk init app --language typescript
+Al crear un proyecto, también se instala el aws-cdk-libmódulo y sus dependencias.
+cdk init --language typescript
+cdk init usa el nombre de la carpeta del proyecto para nombrar varios elementos del proyecto, incluidas las clases, las subcarpetas y los archivos. Los guiones del nombre de la carpeta se convierten en guiones bajos. Sin embargo, de lo contrario, el nombre debe tener la forma de un TypeScript identificador; por ejemplo, no debe empezar por un número ni contener espacios.
+
+Paso1: Crea una Cuenta de AWS
+Si es la primera vez que lo usa AWS, debe registrarse Cuenta de AWS y crear un usuario administrativo.
+Cuando interactúa con AWS, especifica sus credenciales de AWS seguridad para comprobar quién es y si tiene permiso para acceder a los recursos que solicita. AWS utiliza las credenciales de seguridad para autenticar y autorizar sus solicitudes.
+Como crear perfiles de AWS locales para tener acceso programatico los diferentes servicios de nuestra cuenta en  AWS
+
+Paso2: Configurar el acceso mediante programación
+Al desarrollar AWS CDK en su entorno local, confiará en ellos AWS CDK CLI para interactuar con sus AWS recursos Servicios de AWS y administrarlos. Para utilizar el AWS CDK CLI, debe configurar el acceso programático. Para obtener más información sobre las diferentes formas de configurar el acceso mediante programación, consulte Autenticación y acceso en la Guía de referencia de herramientas y AWS SDK.
+Para los nuevos usuarios a los que su empresa no les haya proporcionado un método de autenticación, les recomendamos que lo utilicen. AWS IAM Identity Center Este método incluye instalar el AWS Command Line Interface (AWS CLI) y usarlo para configurar e iniciar sesión en el portal de AWS acceso. Para configurar el acceso mediante programación mediante el Centro de identidad de IAM, consulte la autenticación del Centro de identidad de IAM:
+Deberán ir al centro de IAM en AWS consola, ahí deberán crear un grupo de trabajo y crearan un usuario dándole permisos respectivos para el entorno de desarrollo, este nos proporcionara las Security Credentials:
+Acces key                       xxxxxxx
+Secret acces key                xxxxxxxxxxxxxxxxxxxxx
+
+Paso3: Instala el AWS CDKCLI
+Primero debemos descargar e instalar la AWSCLI o la interface de comandos de AWS dependiendo su sistema operativo lo escogerán.
+Una vez instalada verificaran vía consola en terminal línea de comandos:
+
+Paso4: Inicie su entorno
+Se debe iniciar cada AWS entorno en el que planea implementar recursos.
+Para arrancar, ejecute lo siguiente:
+cdk bootstrap aws://ACCOUNT-NUMBER/REGION
+Paso final: Para levantar nuestra infraestructura basada en código
+Luego de importar todas la librerías necesarias y descargar todas las dependencias necesarias para implementar una API en CDK estamos listos para desplegar e implementar toda nuestra infraestructura, mediante línea de comandos en consola:
+cdk deploy
+Salidas de pila #
+Cuando se complete la implementación, verá esta línea:
+
+CdkWorkshopStack.Endpoint8024A810 = https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
+Esta es una salida de pila que la construcción de API Gateway agrega automáticamente e incluye la URL del punto final de API Gateway.
+
+Probando tu aplicación #
+Intentemos llegar a este punto final con curl. Copie la URL y ejecútela (su prefijo y región probablemente serán diferentes).
+
+Si no tiene curl instalado, siempre puede usar su navegador web favorito para acceder a esta URL.
+https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/
+La salida debería verse así:
+
+Hello, CDK! You've hit /

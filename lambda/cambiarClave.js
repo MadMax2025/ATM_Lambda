@@ -1,6 +1,14 @@
 
 const AWS = require('aws-sdk');
+const mysql = require('mysql');
 
+const connection = mysql.createConnection({
+  host: 'sql3.freemysqlhosting.net',
+  user: 'sql3710437',
+  password: 'M4ZS1SNcx4',
+  database: 'sql3710437',
+  port: 3306
+});
 exports.handler = async (event) => {
   // 1. Input Validation
   try {
